@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>UT Web Services Arc</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Molly Shewchuk">
+    <meta name="copyright" content="2022">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap" rel="stylesheet">
+    <meta name="robots" content="noindex, nofollow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="stylesheet" type="text/css" href="dashboard.css">
+    <script type="text/javascript">
+        var app = angular.module('Body', []);
+    </script>
+        <script type="text/javascript">
+            var lines;
+            $(document).ready(function(){
+                var bg = document.getElementById("bg");
+                if(bg) {
+                    lines = document.getElementById("bg").childNodes;
+                }
+            });
+            function doIt() {
+                for (var i = 0; i < lines.length; i++) {
+                    var toggleMove = getToggleItemMove(i);
+                    setTimeout(toggleMove, i * Math.random() * 20);
+                }
+            }
+            app.run(function($rootScope, $http) {
+                $rootScope.auth = {
+                    form: 'login',
+                    errors: [],
+                    set: (f) => {
+                        $rootScope.auth.form = f;
+                        $rootScope.auth.errors = [];
+                        doIt();
+                    }
+                };
+                $rootScope.account = [];
+            });
+            function getToggleItemMove(i) {
+                return function() {
+                    if (lines[i].style.float != "left") {
+                        lines[i].style.float = "left";
+                    } else {
+                        lines[i].style.float = "right";
+                    }
+                }
+            }
+        </script>
+    </head>
+<body ng-app="Body" ng-cloak id="arc_space">
+    <div id="bgscreen"></div>
+    <main class="default">
+        <div class="auth_forms">
+            <canvas id="img_canvas"></canvas>
+            <div id="bg_container">
+                <div id="bg"></div>
+                <div id="bg_pane" class="{{auth.form}}">
+                    <div id="bg_pane_btn" class="{{auth.form}}">
+                        <a class="pane_btn" ng-click="auth.set('signup')" ng-show="auth.form == 'login'">Sign Up &gt;</a>
+                        <a class="pane_btn" ng-click="auth.set('login')" ng-show="auth.form == 'signup'">&lt; Log In</a>
+                    </div>
+
+                    <form id="login" action="" method="post" enctype="multipart/form-data" ng-show="auth.form == 'login'">
+                        <h2>Log In</h2>
+                        <ul ng-show="auth.errors.length > 0">
+                            <li ng-repeat="error in auth.errors">{{error}}</li>
+                        </ul>
+                        <label for="login_email">
+                            <input id="login_email" type="email" name="email" placeholder=" ">
+                            <span>Work Email Address</span>
+                        </label>
+                        <label for="login_password">
+                            <input id="login_password" type="password" name="password" placeholder=" ">
+                            <span>Password</span>
+                        </label>
+                        <input type="hidden" name="login" value="">
+                        <div class="controls">
+                            <button>Log In</button>
+                        </div>
+                    </form>
+
+                    <form id="signup" action="" method="post" enctype="multipart/form-data" ng-show="auth.form == 'signup'">
+                        <h2>Sign Up</h2>
+                        <ul ng-show="auth.errors.length > 0">
+                            <li ng-repeat="error in auth.errors">{{error}}</li>
+                        </ul>
+                        <label for="signup_email">
+                            <input id="signup_email" type="email" name="email" placeholder=" ">
+                            <span>Work Email Address</span>
+                        </label>
+                        <label for="signup_password">
+                            <input id="signup_password" type="password" name="password" placeholder=" ">
+                            <span>New Password</span>
+                        </label>
+                        <label for="signup_password_confirm">
+                            <input id="signup_password_confirm" type="password" name="password_confirm" placeholder=" ">
+                            <span>Confirm New Password</span>
+                        </label>
+                        <input type="hidden" name="signup" value="4d1f3cbba9e9b6ee7f00fc3855afe1453d433aa499b6213817aabc47b0c8d4b1">
+                        <div class="controls">
+                            <button>Sign Up</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var bg = $("#bg")[0];
+            var windowWidth = bg.offsetWidth + 15;
+            var height = bg.offsetHeight + 18;
+            var width = 0.6 * windowWidth;
+
+            var horzUnits = Math.floor(width / 11.7767);
+            var vertUnits = Math.floor(height / 18);
+
+            var template;
+            var padding = 15;
+
+            getImageTemplate('./logo.jpg', padding);
+
+            function generate() {
+                for (let i = 0; i < padding; i++) {
+                    bg.innerHTML += `<div>${randomBinary(horzUnits)}</div>`;
+                }
+                len = template.length;
+                for (line in template){
+                    if (line != len - 1) {
+                        bg.innerHTML += `<div>${randomBinary(padding)}${template[line]}${randomBinary(padding)}</div>`;
+                    }
+                }
+                for (let i = 0; i < padding; i++) {
+                    let line = randomBinary(horzUnits);
+                    bg.innerHTML += `<div>${line}</div>`;
+                }
+            }
+
+            function randomBinary(n=1) {
+                char = "";
+                for (let i = 0; i < n; i++) {
+                    char += Math.round(Math.random());
+                }
+                return char;
+            }
+
+            function setCharAt(str, index, char) {
+                return str.substr(0,index) + char + str.substr(index+1);
+            }
+
+            function getImageTemplate(image, padding) {
+                var values = [];
+                var tempVertUnits = vertUnits - (padding * 2);
+                var tempHorzUnits = horzUnits - (padding * 2);
+                var dataArr = new Array(tempVertUnits).fill("");
+
+                var canvas = document.getElementById("img_canvas");
+                var context = canvas.getContext("2d");
+                var imageObj = new Image();
+                imageObj.crossOrigin = "Anonymous";
+                imageObj.onload = function(){
+                    canvas.width = imageObj.width;
+                    canvas.height = imageObj.height;
+                    var horzPixSize = imageObj.width / tempHorzUnits;
+                    var vertPixSize = imageObj.height / tempVertUnits;
+                    context.drawImage(imageObj, 0, 0);
+                    for (let y = 0; y < imageObj.height - vertPixSize; y += vertPixSize) {
+                        for (let x = 1; x < imageObj.width - horzPixSize; x += horzPixSize) {
+                            var canvasColor = context.getImageData(x, y, 1, 1).data;
+                            if (canvasColor.length > 0) {
+                                var avg = (canvasColor[0] + canvasColor[1] + canvasColor[2]) / 3;
+                                values.push(avg);
+                            }
+                        }
+                        values.push("X");
+                    }
+                    template = dataArr;
+                    readValues(dataArr, values);
+                };
+                imageObj.src = image;
+            }
+
+            function readValues(dataArr, values) {
+                y = 0;
+                values.forEach(value => {
+                    if (y < vertUnits) {
+                        if (value == "X") {
+                            y++;
+                        } else if (value < 128) {
+                            dataArr[y] += "&nbsp;";
+                        }
+                        else {
+                            dataArr[y] += randomBinary();
+                        }
+                    }
+                });
+                generate();
+            }
+        });
+    </script> 
+    </main>
+</body>
+</html>

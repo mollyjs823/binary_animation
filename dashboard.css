@@ -1,0 +1,318 @@
+.sm_text {
+	font-size: 10px;
+	color: rgba(255, 255, 255, 0.8);
+	margin: 4px 0;
+	text-align: center;
+}
+.md_text {
+	font-size: 12px;
+	color: rgba(255, 255, 255, 0.9);
+	margin: 4px 0;
+	text-align: center;
+}
+.lg_text {
+	font-size: 16px;
+	margin: 6px 0;
+	text-align: center;
+}
+
+.dashboard {
+	position: relative;
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	width: 100%;
+	height: 100%;
+	min-width: 100%;
+	min-height: 100vh;
+	top: 0px;
+	left: 0px;
+	justify-content: stretch;
+	align-items: stretch;
+	align-content: stretch;
+}
+
+.dashboard .panel {
+	position: relative;
+	display: flex;
+	flex: 1;
+	width: 100%;
+	min-height: 50%;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+	flex-direction: column;
+}
+.dashboard .panel > .head {
+	width: 100%;
+	min-height: 64px;
+	justify-content: flex-start;
+	align-items: center;
+	align-content: center;
+	position: relative;
+	display: flex;
+	flex-flow: row wrap;
+}
+.dashboard .panel.top {
+	justify-content: flex-start;
+}
+.dashboard .panel .content.top {
+	align-content: flex-start;
+}
+.dashboard .panel > .head h2,
+.dashboard .panel > .head span,
+.dashboard .panel > .head a {
+	margin: 0px 12px;
+}
+.dashboard .panel > .head span {
+	font-size: 32px;
+}
+.dashboard .panel > .head a {
+	color: white;
+	text-decoration: none;
+}
+.dashboard .panel > .head a:hover {
+	color: white;
+	text-decoration: underline;
+}
+.dashboard .panel > .head a:active {
+	color: white;
+	text-decoration: none;
+}
+.dashboard .panel > .content {
+	width: 100%;
+	position: relative;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+	min-height: 360px;
+}
+.dashboard .panel .content .card {
+	margin: 4px;
+	padding: 8px;
+	width: 250px;
+	max-width: 250px;
+	height: 250px;
+	max-height: 250px;
+	overflow: hidden;
+	background: var(--lt-gray);
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: space-between;
+	align-content: center;
+	align-items: center;
+	position: relative;
+}
+.dashboard .panel .content .card:after {
+	content: "";
+	position: absolute;
+	width: 40%;
+	height: 2px;
+	bottom: 0px;
+	left: 30%;
+	background-color: #4d4d4d;
+}
+.dashboard .panel .content .card > .underlay {
+	position: absolute;
+	content: "";
+	bottom: -30px;
+	right: -20px;
+	width: 100%;
+	height: 100%;
+	background-size: 70%;
+	background-repeat: no-repeat;
+	background-position: bottom right;
+	opacity: 0.25;
+
+}
+.dashboard .panel .content .card  :not(.underlay) {
+	z-index: 99;
+
+}
+.dashboard .panel .content .card > .head {
+	width: 100%;
+	display: flex;
+	min-height: 32px;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	align-items: center;
+	align-content: center;
+}
+.dashboard .panel .content .card > .head img {
+	margin-left: 0px;
+}
+.dashboard .panel .content .card > .head .controls {
+	width: 120px;
+	display: flex;
+	justify-content: stretch;
+	align-items: center;
+	align-content: center;
+}
+.dashboard .panel .content .card > .head .controls button {
+	flex: 1;
+	width: 50%;
+	height: 32px;
+	margin-left: 0px;
+	border-radius: 0px;
+	border: 0px;
+	outline: 0px;
+	background-color: transparent;
+}
+.dashboard .panel .content .card > .head .controls button.close {
+	color: var(--red-light);
+}
+.dashboard .panel .content .card > .head .controls button.close:hover {
+	background-color: var(--red-light);
+	color: black;
+}
+.dashboard .panel .content .card > .head .controls button.done {
+	color: var(--aeren-green);
+}
+.dashboard .panel .content .card > .head .controls button.done:hover {
+	background-color: var(--aeren-green);
+	color: black;
+}
+.dashboard .panel .content .card .url {
+	font-size: 10px;
+	word-break: break-all;
+}
+.dashboard .panel .content .card .url a {
+	color: white;
+	text-decoration: none;
+}
+.dashboard .panel .content .card .url a:hover {
+	text-decoration: underline;
+}
+.dashboard .panel .content .card .context p {
+	font-size: 12px;
+	padding: 8px 0;
+}
+.dashboard .panel .content .card .context p strong {
+	color: gold;
+}
+
+
+.dashboard .panel .content .counts_row {
+	background: var(--lt-gray);
+	width: 100%;
+	max-width: 1280px;
+	position: relative;
+	display: grid;
+	grid-template-columns: repeat(8, 1fr);
+	justify-content: stretch;
+}
+.dashboard .panel .content .counts {
+	flex: 1;
+	border-right: 1px solid #5D5D5D;
+	height: 180px;
+	min-height: 180px;
+	padding: 12px;
+}
+.dashboard .panel .content .counts:last-of-type {
+	border: none;
+}
+.dashboard .panel .content .counts > .head {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+	font-size: 11px;
+	width: 100%;
+	padding: 12px 0px 0px 0px;
+}
+.dashboard .panel .content .counts .number {
+	font-family: "Bitter", serif; 
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+	font-size: 53px;
+	width: 100%;
+}
+.dashboard .panel .content .spelling {
+	width: 100%;
+	margin: 6px 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-content: center;
+	align-items: center;
+	color: var(--aeren-green);
+}
+.dashboard .panel .content .spelling button {
+	background: transparent;
+	border: none;
+	outline: none;
+	color: white;
+	transition: all 0.2s ease-in-out;
+}
+.dashboard .panel .content .spelling button:hover {
+	background: rgba(255, 255, 255, 0.25);
+}
+.dashboard .panel .content .spelling select {
+	background: transparent;
+	color: white;
+	margin: 6px 0;
+}
+.dashboard .panel .content .spelling option {
+	color: black;
+}
+.dashboard .panel .loading {
+	position: absolute;
+	display: flex;
+	width: 100%;
+	height: 100%;
+	background-color: var(--dark);
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+}
+.dashboard .panel .loading span {
+	color: white;
+	font-size: 64px;
+	animation-name: spinning;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+@keyframes spinning {
+	from { transform: rotate(0deg) }
+	to { transform: rotate(360deg) }
+}
+
+
+@media only screen and (max-width: 1250px) {
+	.dashboard .panel .content .counts_row {
+		grid-template-columns: repeat(4, 1fr);
+	}
+	.dashboard .panel .content .counts {
+		max-width: 300px;
+	}
+	.dashboard .panel .content .counts:last-of-type, .dashboard .panel .content .counts:nth-of-type(4) {
+		border: none;
+	}
+}
+@media only screen and (max-width: 750px) {
+	.dashboard .panel .content .counts_row {
+		grid-template-columns: repeat(2, 1fr);
+	}
+	.dashboard .panel .content .counts:nth-of-type(2n) {
+		border: none;
+	}
+}
+@media only screen and (max-width: 400px) {
+	.dashboard .panel .content .counts_row {
+		grid-template-columns: auto;
+	}
+	.dashboard .panel .content .counts:nth-of-type(n) {
+		border: none;
+		border-bottom: 1px solid #5D5D5D;
+	}
+	.dashboard .panel .content .counts:last-of-type {
+		border: none;
+	}
+}

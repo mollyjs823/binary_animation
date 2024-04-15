@@ -1,0 +1,318 @@
+@import url('https://fonts.googleapis.com/css2?family=Bitter:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mono&display=swap');
+
+:root {
+	--dark: #212224;
+	--lt-gray: #3f3f3f;
+	--red: #a50a2e;
+	--red-light: #ff406c;
+	--white: #f3f3f3;
+	--white-dark: #b6b6b6;
+	--aeren-green: #00d798;
+	--aeren-green-over: #00ffb4;
+	--fade-background: rgba(255,255,255, 0.03);
+}
+@font-face {
+	font-family: 'paragraph';
+	src: url(/assets/fonts/Manrope/Manrope-VariableFont_wght.ttf) format('truetype');
+}
+
+
+::-webkit-scrollbar {
+  	width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  	background: #4A4B4C;
+}
+
+::-webkit-scrollbar-thumb {
+  	background-color: var(--white-dark);
+  	border-radius: 20px;
+  	border: 3px solid #4A4B4C;
+}
+
+
+.material-symbols-sharp {
+	font-variation-settings:
+	'FILL' 0,
+	'wght' 200,
+	'GRAD' 0,
+	'opsz' 48
+}
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	font-weight: normal;
+}
+body {
+	padding: 0px;
+	margin: 0px;
+	min-width: 100%;
+	min-height: 100vh;
+	overflow-x: hidden;
+	background-color: var(--dark);
+	color: var(--white);
+	font-family: 'Nunito', serif;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-family: "Bitter", serif;
+	letter-spacing: 1px;
+}
+header {
+	position: fixed;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-content: center;
+	align-items: center;
+	width: 100%;
+	height: 40px;
+	margin-bottom: 40px;
+	background-color: rgba(255,255,255, 0.2);
+	padding: 0px 24px;
+	z-index: 10001;
+}
+header .controls a {
+	color: white;
+	text-decoration: none;
+}
+header .controls a:hover {
+	text-decoration: underline;
+}
+main {
+	position: relative;
+	display: flex;
+	justify-content: stretch;
+	align-items: stretch;
+	align-content: stretch;
+	z-index: 1;
+	width: 100%;
+	height: 100%;
+	min-width: 100%;
+	min-height: 100vh;
+	padding: 40px;
+}
+form {
+	display: flex;
+	flex-direction: column;
+	padding: 24px;
+	z-index: 1;
+}
+h1, h2, h3, h4 {
+	margin: 0px;
+}
+button, a {
+	cursor: pointer;
+}
+#login, #signup {
+	max-width: 380px;
+}
+#logout_banner {
+	width: 100%;
+	position: relative;
+	background-color: var(--red);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+	color: var(--white);
+	font-size: 18px;
+	font-weight: bold;
+	padding: 24px;
+}
+.auth_forms {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex: 1;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+	flex-direction: column;
+}
+.auth_forms h2 {
+	margin-bottom: 24px;
+}
+.auth_forms input {
+	padding: 12px 16px;
+	border-radius: 0px;
+	background-color: transparent;
+	font-size: 16px;
+	color: var(--white);
+	position: relative;
+	height: 40px;
+	border: none;
+}
+.auth_forms input:focus {
+	outline: none;
+	background: transparent;
+}
+.auth_forms label {
+	position: relative;	
+	height: 40px;
+	font-size: 13px;
+	color: var(--white);
+	border-image: linear-gradient(90deg, #00d696af, var(--aeren-green)) 1;
+	border-width: 1px;
+	border-style: solid;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	margin: 12px 0;
+}
+.auth_forms label::before,
+.auth_forms label::after {
+	content: "";
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	height: 16px;
+	width: 1px;
+	display: block;
+	background: linear-gradient(0deg, var(--aeren-green), transparent);
+	z-index: 99;
+}
+.auth_forms label::after {
+	right: 0;
+	height: 5px;
+	left: unset;
+}
+.auth_forms label span {
+	position: absolute;
+	font-size: 12px;
+	top: 18px;
+	left: 10px;
+	text-transform: uppercase;
+	cursor: text;
+	transition: all 0.2s ease-in-out;
+}
+.auth_forms input:focus + span,
+.auth_forms input:not(:placeholder-shown) + span {
+	top: -10px;
+	left: 0;
+	font-size: 10px;
+	color: #ededed;
+}
+.auth_forms form .controls button {
+	padding: 12px 36px;
+	font-size: 16px;
+	font-family: "Bitter", serif;
+	font-weight: 500;
+	background-color: var(--aeren-green);
+	color: var(--dark);
+	border-radius: 0px;
+	border: none;
+	transition: all 0.1s ease-in-out;
+}
+.auth_forms form .controls button:hover {
+	background-color: var(--aeren-green-over);
+	padding: 12px 40px;
+}
+.auth_forms form .controls a {
+	font-size: 13px;
+	color: var(--aeren-green);
+	cursor: pointer;
+	padding: 8px;
+	text-decoration: none;
+}
+.auth_forms form .controls a:hover {
+	text-decoration: underline;
+}
+.auth_forms form .controls {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	align-content: center;
+	padding-top: 16px;
+}
+.auth_forms form ul {
+	margin: 0px;
+	margin-top: 6px;
+	margin-bottom: -6px;
+}
+.auth_forms form ul li {
+	color: var(--red-light);
+	font-size: 13px;
+}
+
+#bg_container {
+    width: 100%;
+    height: 100%;
+}
+#bg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    color: #424242;
+    background-color: #383838;
+    font-family: "Noto Sans Mono", monospace;
+    font-size: 18px;
+    line-height: 18px;
+    letter-spacing: 1px;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+}
+#bg div {
+	float: right;
+}
+#img_canvas {
+    display: none;
+    width: 100%;
+    height: 100%;
+}
+
+
+#bg_pane {
+    position: absolute;
+    top: 0;
+    width: 40%;
+    height: 100%;
+    background-color: #282828;
+    font-family: "Noto Sans Mono", monospace;
+    transition: all 0.3s ease-in-out;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+#bg_pane_btn {
+    position: absolute;
+    padding: 12px 24px;
+    top: 0px;
+    width: 180px;
+    height: 60px;
+    background-color: #282828;
+    color: #00ffad;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+}
+#bg_pane.login {
+	left: 0px;
+}
+#bg_pane_btn.login {
+    right: -180px;
+	left: unset;
+}
+#bg_pane.signup {
+	left: calc(100vw * 0.6);
+}
+#bg_pane_btn.signup {
+	left: -180px;
+	right: unset;
+}
+#bg_pane_btn a {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	align-content: center;
+	justify-content: center;
+}
